@@ -228,8 +228,7 @@
         <h2 class="title is-3">Results</h2>
         <div class="content has-text-justified">
           <p>
-            We present the rendered novel view video and pose estimation results.
-            The experimental results demonstarte that our method  can effectively deblur images,
+            The experimental results demonstarte that our method can effectively deblur images,
             render novel view images and recover the camera motion trajectories accurately
             within exposure time.
           </p>
@@ -243,6 +242,21 @@
       <div class="column is-four-fifths">
         <h2 class="title is-size-5">Novel View Synthesis</h2>
         <div class="content has-text-justified">
+          <p>
+            To showcase the effectiveness of our <font color="#f03a17">BAD-Gaussians</font>, we provide videos illustrating the capability of BAD-Gaussians to recover high-quality latent sharp video from blurry images of Deblur-NeRF's real-world datasets. In the above videos, on the left are our rendered novel view images and on the right are the input blurry images.
+          </p>
+          <video id="bad-gaussian-tanabata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bad-gaussian-tanabata.x264.mp4"
+                    type="video/mp4">
+          </video>
+          <video id="bad-gaussian-wine" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bad-gaussian-wine.x264.mp4"
+                    type="video/mp4">
+          </video>
+          <video id="bad-gaussian-pool" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bad-gaussian-pool.x264.mp4"
+                    type="video/mp4">
+          </video>
           <video id="bad-gaussian-basket-fullres" autoplay muted loop playsinline height="100%">
             <source src="./static/videos/bad-gaussian-basket-fullres.x264.mp4"
                     type="video/mp4">
@@ -259,10 +273,11 @@
             <source src="./static/videos/bad-gaussian-stair-fullres.x264.mp4"
                     type="video/mp4">
           </video>
+          <video id="ikun2" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/ikun2.x264.mp4"
+                    type="video/mp4">
+          </video>
         <!-- <h2 class="subtitle has-text-centered"> -->
-          <p>
-            To showcase the effectiveness of our <font color="#f03a17">BAD-Gaussians</font>, we provide videos illustrating the capability of BAD-Gaussians to recover high-quality latent sharp video from blurry images of Deblur-NeRF's real-world datasets. In the above videos, on the left are our rendered novel view images and on the right are the input blurry images.
-          </p>
           <p>
             Notably, in the provided videos, due to the fast training speed and low GPU memory requirements of our method, we are able to train real scenes at the full resolution of 2400×1600 to achieve maximum reconstruction quality in about 1.5 hours, compared to the resolution of 600×400 that we used in all experiments in the paper for a fair comparison.
           </p>
