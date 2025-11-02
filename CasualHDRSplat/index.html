@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="Casual3DHDR: Robust High Dynamic Range 3D Gaussian Splatting from Casually Captured Videos.">
+  <meta name="keywords"
+    content="Casual3DHDR, High dynamic range, Motion blur, 3D Gaussian Splatting, Novel view synthesis, Casual video, Exposure time estimation, Camera response function, Pose optimization, Camera trajectory, B-Spline curve">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Casual3DHDR</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script> -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/smiling-face-with-horns_1f608.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Casual3DHDR: High Dynamic Range <font color="#3388BB">3D Gaussian
+                Splatting</font> from <font color="#881144">Casually Captured</font> Videos</h1>
+            <h1 class="title is-3 publication-title">ACM Multimedia 2025</h1>
+            <div class="is-size-5 publication-authors">
+              <p align="center">
+                <a href="https://github.com/TeaDrinkingGong">Shucheng Gong</a><sup>1,2*</sup> &emsp;&emsp;
+                <a href="https://github.com/LingzheZhao">Lingzhe Zhao</a><sup>1*</sup> &emsp;&emsp;
+                <a href="https://akawincent.github.io">Wenpu Li</a><sup>1*</sup> &emsp;&emsp;
+                Hong Xie<sup>2†</sup> &emsp;&emsp;
+                Yin Zhang<sup>1,4</sup> &emsp;&emsp;
+                Shiyu Zhao<sup>1</sup> &emsp;&emsp;
+                <a href="https://ethliup.github.io/">Peidong Liu</a><sup>1†</sup>
+              </p>
+
+              <p align="center">
+                <sup>*</sup>equal contribution &emsp;&emsp; <sup>†</sup> denotes corresponding author.
+              </p>
+
+              <p align="center">
+                <sup>1</sup>Westlake University &emsp;&emsp;
+                <sup>2</sup>Wuhan University &emsp;&emsp;
+                <sup>3</sup>Zhejiang University &emsp;&emsp;
+              </p>
+
+
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <!-- PDF Link. -->
+                  <span class="link-block">
+                    <a href="https://arxiv.org/abs/2504.17728"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                      </span>
+                      <span>arXiv</span>
+                    </a>
+                  </span>
+                  <!-- Code Link. -->
+                  <span class="link-block">
+                    <a href="https://github.com/WU-CVGL/CasualHDRSplat/"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video id="train_view_traj" autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/train_view_traj.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">
+          Given a casually captured video with auto exposure, camera motion blur, and significant exposure time changes,
+          we train 3DGS to reconstruct a sharp HDR scene.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video id="novel_view_spiral_traj" autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/novel_view_spiral_traj.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">
+          After reconstructing the 3D HDR scene, we can render sharp LDR videos (for standard monitor display) with any
+          given exposure time and camera trajectory.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <!-- Keywords. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Keywords</h2>
+          <div class="content has-text-justified">
+            <p>
+              High dynamic range, Motion blur, 3D Gaussian Splatting, Novel view synthesis, Casual video, Exposure time
+              estimation, Camera response function, Pose optimization, Camera trajectory, B-Spline curve
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <br>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <!-- Teaser. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Teaser</h2>
+          <image src="./static/images/teaser.png" class="img-responsive" alt="overview"><br>
+            <div class="content has-text-justified">
+              <p>
+                a) Our method can reconstruct 3D HDR scenes from videos casually captured with auto-exposure enabled.
+              </p>
+              <p>
+                b) Our approach achieves superior rendering quality compared to methods like Gaussian-W and
+                HDR-Plenoxels.
+              </p>
+              <p>
+                c) After 3D HDR reconstruction, we can not only synthesize novel view, but also perform various
+                downstream tasks, such as 1) HDR exposure editing, 2) Image deblurring.
+              </p>
+            </div>
+        </div>
+      </div>
+      <!--/ Teaser. -->
+    </div>
+  </section>
+
+  <br>
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Photo-realistic novel view synthesis from multi-view images, such as neural radiance field (NeRF) and 3D
+              Gaussian Splatting (3DGS), has gained significant attention for its superior performance.
+              <br>
+              However, most existing methods rely on low dynamic range (LDR) images, limiting their ability to capture
+              detailed scenes in high-contrast environments. While some prior works address high dynamic range (HDR)
+              scene reconstruction, they typically require multi-view sharp images with varying exposure times captured
+              at fixed camera positions, which is time-consuming and impractical.
+              <br>
+              To make data acquisition more flexible, we propose <b>Casual3DHDR</b>, a robust one-stage method that
+              reconstructs 3D HDR scenes from casually-captured auto-exposure (AE) videos, even under severe motion blur
+              and unknown, varying exposure times.
+              <br>
+              <b>Casual3DHDR</b> integrates a continuous-time camera trajectory into a unified physical imaging model,
+              jointly optimizing exposure times, camera trajectory, and the camera response function (CRF).
+              <br>
+              Extensive experiments on synthetic and real-world datasets demonstrate that <b>Casual3DHDR</b> outperforms
+              existing methods in robustness and rendering quality.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <br>
+
+  <section>
+    <!-- Pipeline. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Pipeline</h2>
+        <image src="./static/images/pipeline.png" class="img-responsive" alt="overview"><br>
+          <div class="content has-text-justified">
+            <p>
+              Given a casually captured video with auto exposure, camera motion blur, and significant exposure time
+              changes, we train 3DGS to reconstruct an HDR scene.
+            </p>
+            <p>
+              We design a unified model based on the physical image formation process, integrating camera motion blur
+              and exposure-induced brightness variations.
+
+            </p>
+            <p>
+              This allows for the joint estimation of camera motion, exposure time, and camera response curve while
+              reconstructing the HDR scene.
+            </p>
+            <p>
+              After training, our method can sharpen the train images and render HDR and LDR images from specified
+              poses.
+            </p>
+          </div>
+      </div>
+    </div>
+    <!--/ Pipeline. -->
+  </section>
+
+  <br>
+
+  <!-- Section of estimated exposure times, two images side by side -->
+  <section class="hero teaser">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Estimated Exposure Times</h2>
+        <div class="columns iscentered">
+          <div class="column is-half">
+            <img src="./static/images/hdr_store_girl_092120240921-173733.png" class="img-responsive"
+              alt="exposure time estimation">
+          </div>
+          <div class="column is-half">
+            <img src="./static/images/hdr_toufu_ltdz_092120240921-171805.png" class="img-responsive"
+              alt="exposure time estimation 2">
+          </div>
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            The figures show the comparison between the jointly-optimized exposure times and the ground truth exposure
+            times for each training image in scenes Toufu-vicon (left) and Girls-vicon (right). The results are scaled
+            uniformly, and it can be observed that the estimated exposure times closely follow the trend of the ground
+            truth exposure times.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <br>
+
+  <section>
+    <!-- Pipeline. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Acknowledgements</h2>
+          <div class="content has-text-justified">
+              <!-- add linkin link https://www.linkedin.com/in/xiang-liu-535219183/ for Xiang Liu -->
+               <!-- <p> We specially thank Xiang Liu for his kind and valuable suggestions during the writing of this paper. -->
+                <p>
+                  We specially thank <a href="https://www.linkedin.com/in/xiang-liu-535219183/">Xiang Liu</a> for his kind and valuable
+                  suggestions during the writing of this paper.
+                </p>
+            </p>
+          </div>
+      </div>
+    </div>
+    <!--/ Pipeline. -->
+  </section>
+
+  <br>
+
+  <section class="hero teaser">
+    <div class="container">
+      <h2 class="title">BibTeX</h2>
+      <div class="columns is-centered">
+        <pre><code>@inproceedings{gong2025casual3dhdr,
+              title={{Casual3DHDR: High Dynamic Range 3D Gaussian Splatting from Casually Captured Videos}},
+              author={Gong, Shucheng and Zhao, Lingzhe and Li, Wenpu and Xie, Hong and Zhang, Yin and Zhao, Shiyu and Liu, Peidong},
+              booktitle={In Proceedings of the 33rd ACM International Conference on Multimedia (MM ’25)},
+              year={2025},
+            }</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <br>
+
+  <footer class="footer">
+    <div class="container">
+      <!-- <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://homes.cs.washington.edu/~kpar/nerfies/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div> -->
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              The source code of this website is borrowed from
+              <a href="https://github.com/nerfies/nerfies.github.io">nerfies</a>.
+            </p>
+            <p>
+              This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              This means you are free to borrow the <a
+                href="https://github.com/LingzheZhao/LingzheZhao.github.io/tree/main/CasualHDRSplat">source code</a> of
+              this website,
+              we just ask that you link back to this page in the footer.
+              Please remember to remove the analytics code included in the header of the website which
+              you do not want on your website.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
