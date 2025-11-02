@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="BAD-Gaussians: Bundle Adjusted Deblur Gaussian Splatting jointly learns the 3D representation and optimizes the camera poses with blurry images and inaccurate initial poses.">
+  <meta name="keywords" content="BAD-Gaussians, Gaussian Splatting, Deblurring, Bundle Adjustment, Pose optimization, Differentiable Rendering, Radiance Fields, Scene Reconstruction">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BAD-Gaussians</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script> -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/smiling-face-with-horns_1f608.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"><img src="./static/images/smiling-face-with-horns_1f608.png" width="42", height="42">BAD-Gaussians: <font color="#f03a17">B</font>undle <font color="#f03a17">A</font>djusted <font color="#f03a17">D</font>eblur Gaussian Splatting</h1>
+          <h1 class="title is-3 publication-title">ECCV 2024</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://github.com/LingzheZhao">Lingzhe Zhao</a><sup>1*</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://wangpeng000.github.io/">Peng Wang</a><sup>1,2*</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://ethliup.github.io/">Peidong Liu</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Westlake University</span>
+            <span class="author-block"><sup>2</sup>Zhejiang University</span>
+          </div>
+
+          <!-- * denotes equal contribution. -->
+          <div class="is-size-6 publication-authors">
+            <span class="author-block">
+              <sup>*</sup> denotes equal contribution.
+            </span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2403.11831"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/WU-CVGL/BAD-Gaussians"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="bad-gaussians-decoration-fullres" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/bad-gaussians-decoration.x264.2400.3M.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        Given a set of severe motion blurred images, <b><font color="#f03a17">BAD-Gaussians</font></b> <font color="#c00000">jointly</font> learns the <font color="#067554">scene representation with 3D Gaussians</font>
+        and recovers the <font color="#209cee">camera motion trajectories</font> within exposure time. It achieves state-of-the-art performance on both synthetic and real datasets in deblurring and novel-view synthesis tasks, with faster training, realtime rendering and lower GPU memory consumption.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            While neural rendering has demonstrated impressive capabilities in 3D scene reconstruction and novel view synthesis, it heavily relies on high-quality sharp images and accurate camera poses. Numerous approaches have been proposed to train Neural Radiance Fields (NeRF) with motion-blurred images, commonly encountered in real-world scenarios such as low-light or long-exposure conditions. However, the implicit representation of NeRF struggles to accurately recover intricate details from severely motion-blurred images and cannot achieve real-time rendering. In contrast, recent advancements in 3D Gaussian Splatting achieve high-quality 3D scene reconstruction and real-time rendering by explicitly optimizing point clouds as Gaussian spheres.
+          </p>
+          <p>
+            In this paper, we introduce a novel approach, named BAD-Gaussians (Bundle Adjusted Deblur Gaussian Splatting), which leverages explicit Gaussian representation and handles severe motion-blurred images with inaccurate camera poses to achieve high-quality scene reconstruction. Our method models the physical image formation process of motion-blurred images and jointly learns the parameters of Gaussians while recovering camera motion trajectories during exposure time.
+          </p>
+          <p>
+            In our experiments, we demonstrate that BAD-Gaussians not only achieves superior rendering quality compared to previous state-of-the-art deblur neural rendering methods on both synthetic and real datasets but also enables real-time rendering capabilities.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Keywords. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Keywords</h2>
+        <div class="content has-text-justified">
+          <p>
+            3D Gaussian Splatting, Deblurring, Bundle Adjustment, Differentiable Rendering.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pipeline. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Pipeline</h2>
+        <image src="./static/images/overview.jpg" class="img-responsive" alt="overview"><br>
+        <div class="content has-text-justified">
+          <p>
+            <strong>
+              Motion Blur Image Formation Model
+            </strong>
+          </p>
+          <p>
+            The mathematical modeling of motion blur process involves integrating over a set of virtual sharp images,
+            as shown by the <b><font color="#00af56">green line</font></b> in the figure.
+
+          </p>
+          <p>
+            <strong>
+              Camera Motion Trajectory Modeling
+            </strong>
+          </p>
+          <p>
+            We model the camera motion during the exposure time with a coutinuous trajectory in <strong>SE</strong>(3) space, as shown by the <b><font color="#ffb700">orange line</font></b> in the figure.
+            The joint optimization of Gaussians and camera trajectories is achieved by minimizing the photometric loss between synthesized and actual blurry images.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Pipeline. -->
+
+    <!-- Cubic B-Spline. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Camera Motion Trajectory Modeling</h2>
+        <image src="./static/images/cubic.jpg" class="img-responsive" alt="overview"><br>
+        <div class="content has-text-justified">
+          <p>
+            <strong>
+              Cubic B-Spline Formulation
+            </strong>
+          </p>
+          <p>
+            Compared to a linear <strong>SE</strong>(3) interpolation, a more complex camera trajectory within exposure time can be controlled
+            by four control knots in <strong>SE</strong>(3) space,
+            denoted as <strong>T</strong><sub>0</sub>, <strong>T</strong><sub>1</sub>, <strong>T</strong><sub>2</sub> and <strong>T</strong><sub>3</sub>. This cubic B-spline formulation is differentiable and can be optimized jointly with the 3D Gaussians. The camera motion trajectory is then recovered by the optimized control knots. This formulation is more flexible and can better capture the complex camera motion during exposure time on real-world datasets.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Cubic B-Spline. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/xoES4eONYoA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Results. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            The experimental results demonstarte that our method can effectively deblur images,
+            render novel view images and recover the camera motion trajectories accurately
+            within exposure time.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Results. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-size-5">Novel View Synthesis</h2>
+        <div class="content has-text-justified">
+          <p>
+            To showcase the effectiveness of our <font color="#f03a17">BAD-Gaussians</font>, we provide videos illustrating the capability of BAD-Gaussians to recover high-quality latent sharp video from blurry images of Deblur-NeRF's synthetic and real datasets, as well as from our challenging real-captured demo dataset. In the videos below, on the left are our rendered novel view images and on the right are the input blurry images.
+          </p>
+          <video id="bad-gaussians-tanabata" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bad-gaussians-tanabata.x264.mp4"
+                    type="video/mp4">
+          </video>
+          <video id="bad-gaussians-wine" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bad-gaussians-wine.x264.mp4"
+                    type="video/mp4">
+          </video>
+          <video id="bad-gaussians-pool" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bad-gaussians-pool.x264.mp4"
+                    type="video/mp4">
+          </video>
+          <video id="bad-gaussians-basket-fullres" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bad-gaussians-basket.x264.3840.5M.mp4"
+                    type="video/mp4">
+          </video>
+          <video id="bad-gaussians-heron-fullres" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bad-gaussians-heron.x264.3840.5M.mp4"
+                    type="video/mp4">
+          </video>
+          <video id="bad-gaussians-puppet-fullres" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bad-gaussians-puppet.x264.3840.5M.mp4"
+                    type="video/mp4">
+          </video>
+          <video id="bad-gaussians-stair-fullres" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/bad-gaussians-stair.x264.3840.5M.mp4"
+                    type="video/mp4">
+          </video>
+          <video id="ikun2" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/ikun_120fps.x264.mp4"
+                    type="video/mp4">
+          </video>
+        <!-- <h2 class="subtitle has-text-centered"> -->
+          <p>
+            Notably, in Deblur-NeRF's real word datasets, thanks to the fast training speed and low GPU memory requirements of our method, we are able to train the real scenes at the full resolution of 2400×1600 to achieve maximum reconstruction quality.
+          </p>
+        </div>
+        <!-- </h2> -->
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Concurrent works</h2>
+        Check out some awesome projects on the same topic:
+        <div class="content has-text-justified">
+          <a href="https://benhenryl.github.io/Deblurring-3D-Gaussian-Splatting/">Deblurring 3D Gaussian Splatting</a> <br>
+          <a href="https://github.com/Jho-Yonsei/SMURF/">SMURF: Continuous Dynamics for Motion-Deblurring Radiance Fields</a> <br>
+          <a href="https://nwang43jhu.github.io/BAGS/">BAGS: Blur Agnostic Gaussian Splatting through Multi-Scale Kernel Modeling </a> <br>
+          <a href="https://spectacularai.github.io/3dgs-deblur/">Gaussian Splatting on the Move:
+            Blur and Rolling Shutter Compensation for Natural Camera Motion</a> <br>
+          <a href="https://arxiv.org/abs/2404.04211">Robust Gaussian Splatting</a> <br>
+          <a href="https://github.com/taekkii/deblurgs">DeblurGS: Gaussian Splatting for Camera Motion Blur</a> <br>
+          <a href="https://chaphlagical.icu/Deblur-GS/">Deblur-GS: 3D Gaussian Splatting from Camera Motion Blurred Images</a> <br>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="teaser" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{zhao2024badgaussians,
+      title={{BAD-Gaussians: Bundle Adjusted Deblur Gaussian Splatting}},
+      author={Zhao, Lingzhe and Wang, Peng and Liu, Peidong},
+      year={2024},
+      eprint={2403.11831},
+      archivePrefix={arXiv},
+  }</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <!-- <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://homes.cs.washington.edu/~kpar/nerfies/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div> -->
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            The source code of this website is borrowed from 
+            <a href="https://github.com/nerfies/nerfies.github.io">nerfies</a>.
+          </p>
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/LingzheZhao/LingzheZhao.github.io/tree/main/BAD-Gaussians">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
