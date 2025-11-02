@@ -17,7 +17,7 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-I am a sencond-year Ph.D. student in the Department of Artificial Intelligence at Westlake University, supervised by <a href='https://ethliup.github.io/'>Prof. Peidong Liu</a>. Prior to this, I received my Bachelor's degree from <a href='https://en.tongji.edu.cn/'>Tongji University</a>.
+I am a sencond-year Ph.D. student in the <a href='https://en-soe.westlake.edu.cn/OurSchool/departmentcenter/departmentAI/'>Department of Artificial Intelligence</a> at <a href='https://en.westlake.edu.cn/'>Westlake University</a>, supervised by <a href='https://ethliup.github.io/'>Prof. Peidong Liu</a>. Prior to this, I received my Bachelor's degree from <a href='https://en.tongji.edu.cn/'>Tongji University</a>.
 My research interests lie in 3D vision (e.g., Scene Representation, Reconsctuction and Understanding), Large Multimodal Models and their applications into Embodied AI (i.e. robots) and Mixed Reality.
 
 (google scholar badge <a href='https://scholar.google.com/citations?user=mN764NsAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>).
