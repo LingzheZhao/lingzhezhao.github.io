@@ -23,24 +23,25 @@ My research interests lie in 3D vision (e.g., Scene Representation, Reconsctucti
 (google scholar badge <a href='https://scholar.google.com/citations?user=mN764NsAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>).
 
 # 🔥 News
-- *2022.02*: &nbsp;🎉🎉 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2022.02*: &nbsp;🎉🎉 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+- *2005.08*: &nbsp;🎉🎉 Our paper <b><em>MBA-SLAM</em></b> is accepted to TPAMI! Thanks to <a href='https://wangpeng000.github.io/'>Peng</a> and all collaborators!
+- *2025.07*: &nbsp;🎉🎉 Our paper <b><em>Casual3DHDR</em></b> is accepted to ACM 2025! Thanks to <a href='https://openreview.net/profile?id=~Shucheng_Gong2'>Shucheng</a>, <a href='https://akawincent.github.io/'>Wenpu</a> and all collaborators!
+- *2024.07*: &nbsp;🎉🎉 Our paper <b><em>BAD-Gaussians</em></b> is accepted to ECCV 2024! Thanks to <a href='https://wangpeng000.github.io/'>Peng</a> and all collaborators!
 
 # 📝 Publications 
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">CVPR 2016</div><img src='images/500x300.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ECCV 2024</div><img src='BAD-Gaussians/static/images/overview.jpg' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-[Deep Residual Learning for Image Recognition](https://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf)
+[BAD-Gaussians: Bundle Adjusted Deblur Gaussian Splatting](https://arxiv.org/abs/2403.11831)
 
-**Kaiming He**, Xiangyu Zhang, Shaoqing Ren, Jian Sun
+**Lingzhe Zhao\***, Peng Wang*, Peidong Liu
 
-[**Project**](https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=DhtAFkwAAAAJ&citation_for_view=DhtAFkwAAAAJ:ALROH1vI_8AC) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+[**Project**](https://lingzhezhao.github.io/BAD-Gaussians/) <strong><span class='show_paper_citations' data='mN764NsAAAAJ:Tyk-4Ss8FVUC'></span></strong>
+- BAD-Gaussians successfully deblurs severe motion-blurred images, synthesizes higher-quality novel views, and achieves real-time rendering, surpassing previous SOTA implicit deblurring rendering methods.
+
+
 </div>
 </div>
-
-- [Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet](https://github.com), A, B, C, **CVPR 2020**
 
 <!-- # 🎖 Honors and Awards
 - *2021.10* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
