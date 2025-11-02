@@ -14,9 +14,10 @@ I am a sencond-year Ph.D. student in the <a href='https://en-soe.westlake.edu.cn
 My research interests lie in 3D vision (e.g., Scene Representation, Reconsctuction and Understanding), Large Multimodal Models and their applications into Embodied AI (i.e. robots) and Mixed Reality.
 
 # 🔥 News
-- *2025.08*: &nbsp;🎉🎉 Our paper <b><em>MBA-SLAM</em></b> is accepted to TPAMI! Thanks to <a href='https://wangpeng000.github.io/'>Peng</a> and all collaborators!
-- *2025.07*: &nbsp;🎉🎉 Our paper <b><em>Casual3DHDR</em></b> is accepted to ACM 2025! Thanks to <a href='https://openreview.net/profile?id=~Shucheng_Gong2'>Shucheng</a>, <a href='https://akawincent.github.io/'>Wenpu</a> and all collaborators!
-- *2024.07*: &nbsp;🎉🎉 Our paper <b><em>BAD-Gaussians</em></b> is accepted to ECCV 2024! Thanks to <a href='https://wangpeng000.github.io/'>Peng</a> and all collaborators!
+- *2025.09*: &nbsp;🎉🎉 Our paper <b><em><a href='https://insomniaaac.github.io/siu3r/'>SIU-3R</a></em></b> is accepted to NeurIPS 2025 as Spotlight! Thanks to all collaborators!
+- *2025.08*: &nbsp;🎉🎉 Our paper <b><em><a href='https://wangpeng000.github.io/MBA-SLAM/'>MBA-SLAM</a></em></b> is accepted to TPAMI! Thanks to <a href='https://wangpeng000.github.io/'>Peng</a> and all collaborators!
+- *2025.07*: &nbsp;🎉🎉 Our paper <b><em><a href='https://lingzhezhao.github.io/CasualHDRSplat/'>Casual3DHDR</a></em></b> is accepted to ACM Multimedia 2025! Thanks to <a href='https://openreview.net/profile?id=~Shucheng_Gong2'>Shucheng</a>, <a href='https://akawincent.github.io/'>Wenpu</a> and all collaborators!
+- *2024.07*: &nbsp;🎉🎉 Our paper <b><em><a href='https://lingzhezhao.github.io/BAD-Gaussians/'>BAD-Gaussians</a></em></b> is accepted to ECCV 2024! Thanks to <a href='https://wangpeng000.github.io/'>Peng</a> and all collaborators!
 
 # 📝 Publications 
 
