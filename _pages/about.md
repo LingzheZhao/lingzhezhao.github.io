@@ -23,22 +23,53 @@ My research interests lie in 3D vision (e.g., Scene Representation, Reconsctucti
 (google scholar badge <a href='https://scholar.google.com/citations?user=mN764NsAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>).
 
 # 🔥 News
-- *2005.08*: &nbsp;🎉🎉 Our paper <b><em>MBA-SLAM</em></b> is accepted to TPAMI! Thanks to <a href='https://wangpeng000.github.io/'>Peng</a> and all collaborators!
+- *2025.08*: &nbsp;🎉🎉 Our paper <b><em>MBA-SLAM</em></b> is accepted to TPAMI! Thanks to <a href='https://wangpeng000.github.io/'>Peng</a> and all collaborators!
 - *2025.07*: &nbsp;🎉🎉 Our paper <b><em>Casual3DHDR</em></b> is accepted to ACM 2025! Thanks to <a href='https://openreview.net/profile?id=~Shucheng_Gong2'>Shucheng</a>, <a href='https://akawincent.github.io/'>Wenpu</a> and all collaborators!
 - *2024.07*: &nbsp;🎉🎉 Our paper <b><em>BAD-Gaussians</em></b> is accepted to ECCV 2024! Thanks to <a href='https://wangpeng000.github.io/'>Peng</a> and all collaborators!
 
 # 📝 Publications 
 
+<!-- ACM MM 2025 -->
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ACM MM 2025</div><img src='CasualHDRSplat/static/images/teaser.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+[Casual3DHDR: High Dynamic Range 3D Gaussian Splatting from Casually Captured Videos](https://dl.acm.org/doi/10.1145/3746027.3755612)
+
+<a href='https://openreview.net/profile?id=~Shucheng_Gong2'>Shucheng Gong</a>*, **Lingzhe Zhao\***, <a href='https://openreview.net/profile?id=~Wenpu_Li'>Wenpu Li</a>*, Hong Xie, Yin Zhang, Shiyu Zhao, Peidong Liu
+
+Acknowledgement: Xiang Liu
+
+[**Project**](https://shucheng-gong.github.io/Casual3DHDR/) [**ArXiv**](https://arxiv.org/abs/2408.15387) [**Code**](https://github.com/WU-CVGL/Casual3DHDR)<strong><span class='show_paper_citations' data='mN764NsAAAAJ:UeHWp8X0CEIC'></span></strong>
+- We present Casual3DHDR, the first method for casual 3D high dynamic range (HDR) imaging using hand-held devices. Our method reconstructs high-quality 3D HDR scenes from a set of low dynamic range (LDR) images captured with varying exposure settings, addressing challenges such as dynamic scenes, complex camera motions, and varying lighting conditions.
+
+
+</div>
+</div>
+
+<!-- TPAMI 2025 -->
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">TPAMI 2025</div>
+<video src='MBA-SLAM/static/MBA-SLAM.mp4' alt="sym" width="100%" autoplay muted loop></video></div></div>
+<div class='paper-box-text' markdown="1">
+
+[MBA-SLAM: Motion Blur Aware Gaussian Splatting SLAM](https://ieeexplore.ieee.org/document/11120442)
+
+<a href='https://wangpeng000.github.io/'>Peng Wang</a>*, **Lingzhe Zhao\***, Yin Zhang, Shiyu Zhao, Peidong Liu
+
+[**Project**](https://wangpeng000.github.io/MBA-SLAM/) [**ArXiv**](https://arxiv.org/abs/2411.08279) [**Code**](https://github.com/WU-CVGL/MBA-SLAM)
+<strong><span class='show_paper_citations' data='mN764NsAAAAJ:roLk4NBRz8UC'></span></strong>
+- MBA-SLAM, the first deblurring SLAM that can accurately estimate the local camera motion trajectories within the exposure time and recovers the high quality 3D scene from blurry sequences.
+</div>
+</div>
+
+<!-- ECCV 2024 -->
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">ECCV 2024</div><img src='BAD-Gaussians/static/images/overview.jpg' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-[BAD-Gaussians: Bundle Adjusted Deblur Gaussian Splatting](https://arxiv.org/abs/2403.11831)
+[BAD-Gaussians: Bundle Adjusted Deblur Gaussian Splatting](https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/03633.pdf)
 
-**Lingzhe Zhao\***, Peng Wang*, Peidong Liu
+**Lingzhe Zhao\***, <a href='https://wangpeng000.github.io/'>Peng Wang</a>*, Peidong Liu
 
-[**Project**](https://lingzhezhao.github.io/BAD-Gaussians/) <strong><span class='show_paper_citations' data='mN764NsAAAAJ:Tyk-4Ss8FVUC'></span></strong>
+[**Project**](https://lingzhezhao.github.io/BAD-Gaussians/) [**ArXiv**](https://arxiv.org/abs/2403.11831) [**Code**](https://github.com/WU-CVGL/BAD-Gaussians) <strong><span class='show_paper_citations' data='mN764NsAAAAJ:Tyk-4Ss8FVUC'></span></strong>
 - BAD-Gaussians successfully deblurs severe motion-blurred images, synthesizes higher-quality novel views, and achieves real-time rendering, surpassing previous SOTA implicit deblurring rendering methods.
-
 
 </div>
 </div>
