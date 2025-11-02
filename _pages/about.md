@@ -13,14 +13,6 @@ redirect_from:
 I am a sencond-year Ph.D. student in the <a href='https://en-soe.westlake.edu.cn/OurSchool/departmentcenter/departmentAI/'>Department of Artificial Intelligence</a> at <a href='https://en.westlake.edu.cn/'>Westlake University</a>, supervised by <a href='https://ethliup.github.io/'>Prof. Peidong Liu</a>. Prior to this, I received my Bachelor's degree from <a href='https://en.tongji.edu.cn/'>Tongji University</a>.
 My research interests lie in 3D vision (e.g., Scene Representation, Reconsctuction and Understanding), Large Multimodal Models and their applications into Embodied AI (i.e. robots) and Mixed Reality.
 
-<!-- {% if site.google_scholar_stats_use_cdn %}
-{% assign gsDataBaseUrl = "https://cdn.jsdelivr.net/gh/" | append: site.repository | append: "@" %}
-{% else %}
-{% assign gsDataBaseUrl = "https://raw.githubusercontent.com/" | append: site.repository | append: "/" %}
-{% endif %}
-{% assign url = gsDataBaseUrl | append: "google-scholar-stats/gs_data_shieldsio.json" %}
-<a href='https://scholar.google.com/citations?user=mN764NsAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a> -->
-
 # 🔥 News
 - *2025.08*: &nbsp;🎉🎉 Our paper <b><em>MBA-SLAM</em></b> is accepted to TPAMI! Thanks to <a href='https://wangpeng000.github.io/'>Peng</a> and all collaborators!
 - *2025.07*: &nbsp;🎉🎉 Our paper <b><em>Casual3DHDR</em></b> is accepted to ACM 2025! Thanks to <a href='https://openreview.net/profile?id=~Shucheng_Gong2'>Shucheng</a>, <a href='https://akawincent.github.io/'>Wenpu</a> and all collaborators!
@@ -72,6 +64,15 @@ Acknowledgement: Xiang Liu
 
 </div>
 </div>
+
+{% if site.google_scholar_stats_use_cdn %}
+{% assign gsDataBaseUrl = "https://cdn.jsdelivr.net/gh/" | append: site.repository | append: "@" %}
+{% else %}
+{% assign gsDataBaseUrl = "https://raw.githubusercontent.com/" | append: site.repository | append: "/" %}
+{% endif %}
+{% assign url = gsDataBaseUrl | append: "google-scholar-stats/gs_data_shieldsio.json" %}
+
+More publications can be found on <a href='https://scholar.google.com/citations?user=mN764NsAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>
 
 <!-- # 🎖 Honors and Awards
 - *2021.10* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
