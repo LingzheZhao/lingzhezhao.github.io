@@ -29,7 +29,7 @@ My research interests lie in 3D vision (e.g., Scene Representation, Reconsctucti
 
 Acknowledgement: Xiang Liu
 
-[**Project**](https://lingzhezhao.github.io/CasualHDRSplat/) [**ArXiv**](https://arxiv.org/abs/2504.17728) [**Code**](https://github.com/WU-CVGL/CasualHDRSplat)<strong><span class='show_paper_citations' data='mN764NsAAAAJ:UeHWp8X0CEIC'></span></strong>
+[**Project**](https://lingzhezhao.github.io/CasualHDRSplat/) [**ArXiv**](https://arxiv.org/abs/2504.17728) [**Code**](https://github.com/WU-CVGL/CasualHDRSplat)<strong><span class='show_paper_citations' data='mN764NsAAAAJ:Se3iqnhoufwC'></span></strong>
 - We present Casual3DHDR, the first method for casual 3D high dynamic range (HDR) imaging using hand-held devices. Our method reconstructs high-quality 3D HDR scenes from a set of low dynamic range (LDR) images captured with varying exposure settings, addressing challenges such as dynamic scenes, complex camera motions, and varying lighting conditions.
 
 
@@ -72,7 +72,9 @@ Acknowledgement: Xiang Liu
 {% endif %}
 {% assign url = gsDataBaseUrl | append: "google-scholar-stats/gs_data_shieldsio.json" %}
 
-More publications can be found on <a href='https://scholar.google.com/citations?user=mN764NsAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>
+<span id="total_cit" style="display:none;"></span>
+
+More publications can be found Google Scholar: <a href='https://scholar.google.com/citations?user=mN764NsAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>
 
 <!-- # 🎖 Honors and Awards
 - *2021.10* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
