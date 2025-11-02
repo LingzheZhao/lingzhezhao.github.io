@@ -32,7 +32,7 @@ My research interests lie in 3D vision (e.g., Scene Representation, Reconsctucti
 <div class='paper-box-text' markdown="1">
 [Casual3DHDR: High Dynamic Range 3D Gaussian Splatting from Casually Captured Videos](https://dl.acm.org/doi/10.1145/3746027.3755612)
 
-<a href='https://openreview.net/profile?id=~Shucheng_Gong2'>Shucheng Gong</a>*, **Lingzhe Zhao\***, <a href='https://openreview.net/profile?id=~Wenpu_Li'>Wenpu Li</a>*, Hong Xie, Yin Zhang, Shiyu Zhao, Peidong Liu
+<a href='https://openreview.net/profile?id=~Shucheng_Gong2'>Shucheng Gong</a>\*, **Lingzhe Zhao\***, <a href='https://openreview.net/profile?id=~Wenpu_Li'>Wenpu Li</a>\*, Hong Xie, Yin Zhang, Shiyu Zhao, Peidong Liu
 
 Acknowledgement: Xiang Liu
 
@@ -50,7 +50,7 @@ Acknowledgement: Xiang Liu
 
 [MBA-SLAM: Motion Blur Aware Gaussian Splatting SLAM](https://ieeexplore.ieee.org/document/11120442)
 
-<a href='https://wangpeng000.github.io/'>Peng Wang</a>*, **Lingzhe Zhao\***, Yin Zhang, Shiyu Zhao, Peidong Liu
+<a href='https://wangpeng000.github.io/'>Peng Wang</a>\*, **Lingzhe Zhao\***, Yin Zhang, Shiyu Zhao, Peidong Liu
 
 [**Project**](https://wangpeng000.github.io/MBA-SLAM/) [**ArXiv**](https://arxiv.org/abs/2411.08279) [**Code**](https://github.com/WU-CVGL/MBA-SLAM)
 <strong><span class='show_paper_citations' data='mN764NsAAAAJ:roLk4NBRz8UC'></span></strong>
@@ -64,7 +64,7 @@ Acknowledgement: Xiang Liu
 
 [BAD-Gaussians: Bundle Adjusted Deblur Gaussian Splatting](https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/03633.pdf)
 
-**Lingzhe Zhao\***, <a href='https://wangpeng000.github.io/'>Peng Wang</a>*, Peidong Liu
+**Lingzhe Zhao\***, <a href='https://wangpeng000.github.io/'>Peng Wang</a>\*, Peidong Liu
 
 [**Project**](https://lingzhezhao.github.io/BAD-Gaussians/) [**ArXiv**](https://arxiv.org/abs/2403.11831) [**Code**](https://github.com/WU-CVGL/BAD-Gaussians) <strong><span class='show_paper_citations' data='mN764NsAAAAJ:Tyk-4Ss8FVUC'></span></strong>
 - BAD-Gaussians successfully deblurs severe motion-blurred images, synthesizes higher-quality novel views, and achieves real-time rendering, surpassing previous SOTA implicit deblurring rendering methods.
