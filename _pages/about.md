@@ -97,7 +97,7 @@ More publications can be found on Google Scholar: <a href='https://scholar.googl
 
 # 🔍 Services
 - Conference Reviewer for <strong>CVPR</strong>, <strong>NeurIPS</strong>, <strong>ACM Multimedia</strong>, <strong>IROS</strong>.
-- Journal Reviewer for <strong>IEEE RA-L</strong>, <strong>IEEE TCSVT</strong>, <strong>IEEE TCVG</strong>, <strong>IEEE TMM</strong>.
+- Journal Reviewer for <strong>IEEE RA-L</strong>, <strong>IEEE TCSVT</strong>, <strong>IEEE TVCG</strong>, <strong>IEEE TMM</strong>.
 
 # 🤝 Contact Me
 - Email:
