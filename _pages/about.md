@@ -75,7 +75,7 @@ Acknowledgement: Xiang Liu
 
 <span id="total_cit" style="display:none;"></span>
 
-More publications can be found Google Scholar: <a href='https://scholar.google.com/citations?user=mN764NsAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>
+More publications can be found on Google Scholar: <a href='https://scholar.google.com/citations?user=mN764NsAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>
 
 <!-- # 🎖 Honors and Awards
 - *2021.10* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
@@ -97,7 +97,7 @@ More publications can be found Google Scholar: <a href='https://scholar.google.c
 
 # 🔍 Services
 - Conference Reviewer for <strong>CVPR</strong>, <strong>NeurIPS</strong>, <strong>ACM Multimedia</strong>, <strong>IROS</strong>.
-- Journal Reviewer for <strong>IEEE TMM</strong>, <strong>IEEE TCSVT</strong>, <strong>IEEE RA-L</strong>.
+- Journal Reviewer for <strong>IEEE RA-L</strong>, <strong>IEEE TCSVT</strong>, <strong>IEEE TCVG</strong>, <strong>IEEE TMM</strong>.
 
 # 🤝 Contact Me
 - Email:
